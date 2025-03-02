@@ -38,13 +38,3 @@ jobs:
             -t $IMAGE_NAME \
             -t $IMAGE_NAME:$VERSION \
             . --push
-
-      # 给镜像打上年月日 tag
-      - name: Tag Docker image with date
-        run: docker tag $IMAGE_NAME:latest $IMAGE_NAME:$(date +%Y%m%d)
-
-      # 推送Docker镜像到DockerHub
-      - name: Push Docker image to DockerHub
-        run: |
-          docker push $IMAGE_NAME:latest
-          docker push $IMAGE_NAME:$(date +%Y%m%d)
