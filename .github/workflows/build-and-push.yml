@@ -14,7 +14,7 @@ jobs:
       IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/docker-coremark
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-      VERSION: $(date +%Y%m%d)
+      VERSION: $(date +'%Y%m%d')
 
     # 定义作业中的步骤
     steps:
@@ -35,5 +35,5 @@ jobs:
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 \
             -t $IMAGE_NAME \
-            -t $IMAGE_NAME:$DATE_TAG \
+            -t $IMAGE_NAME:$VERSION \
             . --push
