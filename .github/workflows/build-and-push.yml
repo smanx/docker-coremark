@@ -36,5 +36,5 @@ jobs:
             --file Dockerfile \
             -t $IMAGE_NAME \
             -t $IMAGE_NAME:$VERSION \
-            -t $IMAGE_NAME:latest \ # 可选改进 2: 添加 latest 标签
-            . --push
+            ./ --push  # 将 . 改为 ./
+
