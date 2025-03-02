@@ -36,12 +36,12 @@ jobs:
           docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6,linux/386,linux/ppc64le,linux/s390x --file Dockerfile -t $IMAGE_NAME --tag $IMAGE_NAME:latest . 2>&1 | tee build.log
 
       # 给镜像打上版本标签
-      - name: Tag Docker image with version
-        run: |
-          docker tag $IMAGE_NAME $IMAGE_NAME:${{ env.VERSION }}
+      # - name: Tag Docker image with version
+      #   run: |
+      #     docker tag $IMAGE_NAME $IMAGE_NAME:${{ env.VERSION }}
 
       # 推送镜像
       - name: Push Docker image with tags
         run: |
           docker push $IMAGE_NAME
-          docker push $IMAGE_NAME:${{ env.VERSION }}
+          # docker push $IMAGE_NAME:${{ env.VERSION }}
