@@ -33,7 +33,7 @@ jobs:
       # 构建Docker镜像（支持多平台）并输出日志到指定文件
       - name: Build Docker image
         run: |
-          docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6,linux/386,linux/ppc64le,linux/s390x --file Dockerfile -t $IMAGE_NAME . 2>&1 | tee build.log
+          docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6,linux/386,linux/ppc64le,linux/s390x --file Dockerfile -t $IMAGE_NAME --tag $IMAGE_NAME:latest . 2>&1 | tee build.log
 
       # 给镜像打上版本标签
       - name: Tag Docker image with version
