@@ -1,2 +1,3 @@
 #!/bin/sh
- ./coremark.exe XCFLAGS="-DMULTITHREAD=`nproc` -DUSE_FORK"
+cd coremark
+make XCFLAGS="-DMULTITHREAD=`nproc` -DUSE_FORK"
