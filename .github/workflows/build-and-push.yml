@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'  # 每天的00:00触发
+  push:
+    branches:
+      - push-all
 
 # 定义工作流中的作业
 jobs:
