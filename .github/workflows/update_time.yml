@@ -2,7 +2,7 @@ name: Update Time
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # 每周日 00:00 UTC 触发
+    - cron: '0 0 1 * *'  # 每月1号 00:00 UTC 触发
   workflow_dispatch:  # 允许手动触发
 
 jobs:
@@ -32,7 +32,8 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update time.txt with $SHANGHAI_TIME"
-            git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+            SHANGHAI_TIME=$(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')
+            git commit -m "Update time.txt with Shanghai time: $SHANGHAI_TIME"
+            git remote set-url origin https://${{ github.actor }}:${{ secrets.MY_PAT }}@github.com/${{ github.repository }}
             git push
           fi
