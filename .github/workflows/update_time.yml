@@ -31,4 +31,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add time.txt
           git commit -m "Update time.txt with Shanghai time"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push
